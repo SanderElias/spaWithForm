@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { UserDataService } from './user-data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'spaWithForm';
+  uds = inject(UserDataService)
+  $fullName = computed(() => `${this.uds.userData.firstName().trim()} ${this.uds.userData.lastName()}`.trim())
+  $avatarUrl = computed(() => {
+    const url = this.uds.userData.thumbnailUrl()
+    return url ? url : `https://via.placeholder.com/150/afafaf`
+  })
 }

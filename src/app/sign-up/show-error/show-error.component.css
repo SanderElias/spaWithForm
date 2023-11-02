@@ -1,0 +1,6 @@
+:host {
+  display: none;
+  color: red;
+  padding-top: var(--size-3);
+  padding-left: var(--size-2)
+}

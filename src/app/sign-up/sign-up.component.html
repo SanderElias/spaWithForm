@@ -1,0 +1,39 @@
+<form #form="ngForm" [errors]="$errors" (ngSubmit)="save()" novalidate>
+  <label>
+    <span>First-Name</span>
+    <input type="text" name="firstName" ngModel signal="user.firstName()" />
+    <se-show-error>{{ $errors()?.firstName }}</se-show-error>
+  </label>
+  <label>
+    <span>Last-Name</span>
+    <input type="text" name="lastName" ngModel signal="user.lastName()" />
+    <se-show-error>{{ $errors()?.lastName }}</se-show-error>
+  </label>
+  <label>
+    <span>Email</span>
+    <input type="email" name="email" ngModel signal="user.email()" />
+    <se-show-error>{{ $errors()?.email }}</se-show-error>
+  </label>
+  <label>
+    <span>password</span>
+    <input type="password" name="password" ngModel signal="user.password()" />
+    <se-show-error>{{ $errors()?.password }}</se-show-error>
+  </label>
+
+  <button [disabled]="form.status === 'INVALID' || form.form.pristine">Submit</button>
+</form>
+
+<details>
+  <summary>Form values</summary>
+  <pre><code>{{form.value|json}}</code></pre>
+</details>
+
+<details>
+  <summary>signal values</summary>
+  <pre><code>{{uds.$user()|json}}</code></pre>
+</details>
+
+<details>
+  <summary>current Errors</summary>
+  <pre><code>{{$errors()|json}}</code></pre>
+</details>

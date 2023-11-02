@@ -1,0 +1,27 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem 1fr;
+}
+
+header {
+  display: flex;
+  background-color: var(--gray-7);
+  padding: var(--size-1);
+  justify-content: space-between;
+
+
+  & div {
+    display:flex;
+    align-items: center;
+    gap: var(--size-1)
+  }
+  & img {
+    height: 3.5rem;
+  }
+
+}
+
+main {
+  padding: var(--size-1)
+}
