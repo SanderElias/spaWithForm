@@ -20,8 +20,23 @@
     <se-show-error>{{ $errors()?.password }}</se-show-error>
   </label>
 
-  <button [disabled]="form.status === 'INVALID' || form.form.pristine">Submit</button>
+  <button
+    [disabled]="form.status === 'INVALID' || form.form.pristine || $saving()"
+  >
+    @if ($saving()) {
+      <app-spinner />
+    } @else {
+      Submit
+    }
+  </button>
 </form>
+
+<app-dialog [shown]="$result">
+  <h3>
+    {{ $result() }}
+  </h3>
+  <button (click)="$result.set(undefined)">dismiss</button>
+</app-dialog>
 
 <details>
   <summary>Form values</summary>

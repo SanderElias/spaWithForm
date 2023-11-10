@@ -1,0 +1,10 @@
+::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    #5C44E4,
+    #F736ee,
+    #f637e3,
+    #f11653
+  );
+  opacity: 0.55;
+}

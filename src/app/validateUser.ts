@@ -1,18 +1,11 @@
-import { ValidationErrors } from '@angular/forms';
-import { UserErrors } from './user-data.service';
+import { UserData, UserErrors } from './user-data.service';
 
 /**
  * Helper function to validate user data. In a separate file, so it can be reused in the backend.
  * @param data
  * @returns
  */
-export function validateUser(data: {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  thumbnailUrl?: string;
-}): UserErrors | null {
+export function validateUser(data: UserData): UserErrors | null {
   // This should mostly work. In practice, the only way to validate an email is by sending one with an code and ask this code back in a follow-up form!
   const emailCheck =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
