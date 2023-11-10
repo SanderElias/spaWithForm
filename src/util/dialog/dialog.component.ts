@@ -20,14 +20,16 @@ export class DialogComponent {
   elm = inject(ElementRef).nativeElement;
 
   constructor() {
+    let first=true; // when used in SSR, it can't close because dialog isn't implemented just yet.
     effect(() => {
       const shown = !!this.shown(); // cast to boolean
       const dlg = this.elm.firstChild as HTMLDialogElement;
       if (shown) {
-        dlg.showModal();
+        dlg?.showModal?.();
       } else {
-        dlg.close();
+        !first && dlg.close?.();
       }
+      first=false;
     });
   }
 }
